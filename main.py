@@ -45,37 +45,29 @@ while 1:
     for x in range(height):
         for y in range(width):
             # top left
-            if x != 0 and y != 0:
-                if array1[x - 1][y - 1] == 1:
-                    living_cells += 1
+            if x != 0 and y != 0 and array1[x - 1][y - 1] == 1:
+                living_cells += 1
             # top
-            if x != 0:
-                if array1[x - 1][y] == 1:
-                    living_cells += 1
+            if x != 0 and array1[x - 1][y] == 1:
+                living_cells += 1
             # top right
-            if x != 0 and y != width - 1:
-                if array1[x - 1][y + 1] == 1:
-                    living_cells += 1
+            if x != 0 and y != width - 1 and array1[x - 1][y + 1] == 1:
+                living_cells += 1
             # right
-            if y != width - 1:
-                if array1[x][y + 1] == 1:
-                    living_cells += 1
+            if y != width - 1 and array1[x][y + 1] == 1:
+                living_cells += 1
             # bottom right
-            if x != height - 1 and y != width - 1:
-                if array1[x + 1][y + 1] == 1:
-                    living_cells += 1
+            if x != height - 1 and y != width - 1 and array1[x + 1][y + 1] == 1:
+                living_cells += 1
             # bottom
-            if x != height - 1:
-                if array1[x + 1][y] == 1:
-                    living_cells += 1
+            if x != height - 1 and array1[x + 1][y] == 1:
+                living_cells += 1
             # bottom left
-            if x != height - 1 and y != 0:
-                if array1[x + 1][y - 1] == 1:
-                    living_cells += 1
+            if x != height - 1 and y != 0 and array1[x + 1][y - 1] == 1:
+                living_cells += 1
             # left
-            if y != 0:
-                if array1[x][y - 1] == 1:
-                    living_cells += 1
+            if y != 0 and array1[x][y - 1] == 1:
+                living_cells += 1
             if array1[x][y] == 1:
                 if living_cells == 2 or living_cells == 3:
                     array2[x][y] = 1

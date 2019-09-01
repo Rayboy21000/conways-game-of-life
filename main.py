@@ -3,7 +3,13 @@ height = int(input('Height? '))
 array1 = []
 array2 = []
 user_text = ''
-cells = 0
+living_cells = 0
+
+array2 = []
+for x in range(height):
+    array2.append([])
+    for y in range(width):
+        array2[x].append(0)
 
 for x in range(height):
     array1.append([])
@@ -14,6 +20,7 @@ for x in range(height):
         else:
             array1[x].append(0)
 print(array1)
+
 
 
 def print_array(array):
@@ -28,75 +35,60 @@ def print_array(array):
 
 
 def clear_screen():
-    for x in range(10):
-        print('')
+    print('--------------------')
+    input()
 
 
 while 1:
+    clear_screen()
+    print_array(array1)
     for x in range(height):
         for y in range(width):
-            if array1[x-1][y-1] == 0:
-                if x == 1:
-                    if y == 1:
-                        #right
-                        if array1[x - 1][y] == 1:
-                            cells += 1
-                        #right down
-                        if array1[x][y] == 1:
-                            cells += 1
-                        #down
-                        if array1[x][y - 1] == 1:
-                            cells += 1
-                        if cells == 3:
-                            array2[x-1][y-1] = 1
-                        cells = 0
-                    elif y == width:
-                        #left
-                        if array1[x - 1][y - 2] == 1:
-                            cells += 1
-                        #left down
-                        if array1[x][y - 2] == 1:
-                            cells += 1
-                        # down
-                        if array1[x][y - 1] == 1:
-                            cells += 1
-                        if cells == 3:
-                            array2[x-1][y-1] = 1
-                        cells = 0
-                    else:
-                        # right
-                        if array1[x - 1][y] == 1:
-                            cells += 1
-                        # right down
-                        if array1[x][y] == 1:
-                            cells += 1
-                        # down
-                        if array1[x][y - 1] == 1:
-                            cells += 1
-                        # left down
-                        if array1[x][y - 2] == 1:
-                            cells += 1
-                        # left
-                        if array1[x - 1][y - 2] == 1:
-                            cells += 1
-                        if cells == 3:
-                            array2[x - 1][y - 2] = 1
-                        cells = 0
-                elif x == height:
-                    if y == 1:
-                        #up
-                        if array1[x - 2][y - 1] == 1:
-                            cells += 1
-                        #up right
-                        if array1[x - 2][y] == 1:
-                            cells += 1
-                        #right
-                        if array1
+            # top left
+            if x != 0 and y != 0:
+                if array1[x - 1][y - 1] == 1:
+                    living_cells += 1
+            # top
+            if x != 0:
+                if array1[x - 1][y] == 1:
+                    living_cells += 1
+            # top right
+            if x != 0 and y != width - 1:
+                if array1[x - 1][y + 1] == 1:
+                    living_cells += 1
+            # right
+            if y != width - 1:
+                if array1[x][y + 1] == 1:
+                    living_cells += 1
+            # bottom right
+            if x != height - 1 and y != width - 1:
+                if array1[x + 1][y + 1] == 1:
+                    living_cells += 1
+            # bottom
+            if x != height - 1:
+                if array1[x + 1][y] == 1:
+                    living_cells += 1
+            # bottom left
+            if x != height - 1 and y != 0:
+                if array1[x + 1][y - 1] == 1:
+                    living_cells += 1
+            # left
+            if y != 0:
+                if array1[x][y - 1] == 1:
+                    living_cells += 1
+            if array1[x][y] == 1:
+                if living_cells == 2 or living_cells == 3:
+                    array2[x][y] = 1
+                else:
+                    array2[x][y] = 0
+            else:
+                if living_cells == 3:
+                    array2[x][y] = 1
+                else:
+                    array2[x][y] = 0
+            living_cells = 0
+    for i in range(height):
+        for j in range(width):
+            array1[i][j] = array2[i][j]
 
-
-
-            else
-
-
-print_array(array1)
 
